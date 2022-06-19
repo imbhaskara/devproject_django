@@ -1,33 +1,14 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+#import Model kita ke dalam views
+from .models import Project
 
-projectsList = [
-    {
-        'id': 1,
-        'title': 'Ecommerce Website',
-        'description': 'This is a ecommerce website',
-    },
-    {
-        'id': 2,
-        'title': 'Porfolio Website',
-        'description': 'This was a project where I built a portfolio website',
-    },
-    {
-        'id': 3,
-        'title': 'Social Network Website',
-        'description': 'Awesome open source social network website project I am still working on',
-    },
-]
 
 # Create your views here.
 def projects(request):
-    number = 7
-    context = {'number':number, 'projects':projectsList}
+    projects = Project.objects.all()
+    context = {'projects':projects}
     return render(request, 'projects/projects.html', context)
 
 def project(request, pk):
-    projectObj = None
-    for i in projectsList:
-        if i['id'] == pk:
-             projectObj = i
-    return render(request, 'projects/single-project.html', {'project':projectObj})
+    project = Project.objects.get(id=pk)
+    return render(request, 'projects/single-project.html', {'project':project})
