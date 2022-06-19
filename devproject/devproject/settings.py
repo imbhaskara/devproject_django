@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     #Register Our Created apps
-    'projects.app.ProjectsConfig',
+    'projects.apps.ProjectsConfig',
 ]
 
 MIDDLEWARE = [

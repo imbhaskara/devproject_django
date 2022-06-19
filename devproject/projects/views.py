@@ -6,4 +6,4 @@ def projects(request):
     return HttpResponse("Here are our products")
 
 def project(request, pk):
-    return HttpResponse("You are looking at project number %s" % pk)
+    return HttpResponse("You are looking at project number " +  str(pk))
