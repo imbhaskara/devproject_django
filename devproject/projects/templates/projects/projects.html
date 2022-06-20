@@ -1,33 +1,40 @@
 {% extends "main.html" %}
 {% block content %}
-    <h1>Welcome to Our DevSearch Project</h1>
-    <p>
-        This is a project for the course "Web Development" at the University of Applied Sciences in Salzburg.
-        The project is a search engine for developers.</p>
-    <p>
-        Here are all of Projects that I have been made so far:
-    </p>
-    <table>
-        <tr>
-            <th>ID</th>
-            <th>Project</th>
-            <th>Description</th>
-            <th>Positive Votes</th>
-            <th>Created at</th>
-            <th></th>
-        </tr>
-        {% for project in projects %}
+    <div class="container">
+        <h1>Welcome to Our DevSearch Project</h1>
+        <p>
+            This is a project for the course "Web Development" at the University of Applied Sciences in Salzburg.
+            The project is a search engine for developers.</p>
+        <p>
+            Here are all of Projects that I have been made so far:
+        </p>
+        <table>
             <tr>
-                <td>{{ project.id }}</td>
-                <td>{{ project.title }}</td>
-                <td>{{ project.description }}</td>
-                <td>{{ project.vote_ratio }}%</td>
-                <td>{{ project.created_at }}</td>
-                <td>
-                    <a href="{% url 'project' project.id %}">View</a>
-                </td>
+                <th>Project</th>
+                <th>Description</th>
+                <th>Positive Votes</th>
+                <th>Created at</th>
+                <th></th>
+                <th></th>
+                <th></th>
             </tr>
-        {% endfor %}
-    </table>
-
+            {% for project in projects %}
+                <tr>
+                    <td>{{ project.title }}</td>
+                    <td>{{ project.description }}</td>
+                    <td>{{ project.vote_ratio }}%</td>
+                    <td>{{ project.created_at }}</td>
+                    <td>
+                        <a href="{% url 'project' project.id %}">View</a>
+                    </td>
+                    <td>
+                        <a href="{% url 'update-project' project.id %}">Edit</a>
+                    </td>
+                    <td>
+                        <a href="{% url 'delete-project' project.id %}">Delete</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
 {% endblock %}
