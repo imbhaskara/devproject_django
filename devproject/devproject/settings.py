@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-18m#0tm#gkbq5i4jg_h_+dk1870-zgm_x$ffot!q%g3owz&pv=
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 
 
 # Application definition
@@ -45,6 +45,8 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    "django.middleware.security.SecurityMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -121,7 +123,19 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
+# Declare path where our Media (Image, etc) will be stored
+MEDIA_URL = '/images/'
+# State Static File yang akan dihubungkan menggunakan Django
+STATICFILES_DIRS = [
+    BASE_DIR / 'static',
+]
+
+# Direct Django to save Media at static/images
+MEDIA_ROOT = os.path.join(BASE_DIR, 'static/images')
+
+# Declate STATIC_ROOT to save where our Static Files will be saved in production
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field

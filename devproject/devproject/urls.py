@@ -15,8 +15,16 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+# Import library untuk memanggil setting dan static files yang sudah kita custom
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('projects.urls')),
 ]
+
+# Custom Sedikit urlpattern untuk memanggil data dari MEDIA_URL dan menyimpan data di MEDIA_ROOT
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

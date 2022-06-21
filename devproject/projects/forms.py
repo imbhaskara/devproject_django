@@ -6,6 +6,7 @@ class ProjectForm(ModelForm):
         model = Project
         fields = [
             'title',
+            'project_image',
             'description',
             'demo_link',
             'source_link',

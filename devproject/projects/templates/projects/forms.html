@@ -1,7 +1,7 @@
 {% extends "main.html"%}
 {% block content %}
 <h1>Project Form</h1>
-<form method="post" action="">
+<form method="post" action="" enctype="multipart/form-data">
     {% comment %} CSRF Token harus dipasang setiap Form Methods agar bisa disimpan ke dalam Database {% endcomment %}
     {% csrf_token %}
     {{ form.as_p }}
